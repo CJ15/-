@@ -1,0 +1,2 @@
+1 . T extends Comparable<? super T> 
+    extends后跟的代表T类型的上限,Comparable<? super T>中?表示Comparable中的类型的下限
