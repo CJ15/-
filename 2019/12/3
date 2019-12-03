@@ -1,2 +1,49 @@
 1 . T extends Comparable<? super T> 
-    extends后跟的代表T类型的上限,Comparable<? super T>中?表示Comparable中的类型的下限
+    --- extends后跟的代表T类型的上限,Comparable<? super T>中?表示Comparable中的类型的下限 ;
+    --- extends对泛型上限进行了限制即T必须是Comparable<? super T>的子类，然后<? super T>表示Comparable<>中的类型下限为T ;
+    练习：设计一个泛型的获取数组最小值的函数.并且这个方法只能接受Number的子类并且实现了Comparable接口。
+    public class Demo01 {
+
+	public static <T extends Number & Comparable<? super T>> T min(T[] values) {
+		//如果数组values对象为null或者长度为0,则返回null
+		if(values == null || values.length == 0)
+			return null ;
+		//两两比较数组中的元素
+		T min = values[0];
+		for(T t:values) {
+			if(min.compareTo(t)>0)
+				min = t;
+		}
+		return min;
+	}
+	
+	public static void main(String[] args) {
+		/*
+		 * Integer i1 = 10; Integer i2 = 5; System.out.println(i1.compareTo(i2));
+		 */
+		Integer[] i = {1,4,2,6,10,5,3,2};
+		System.out.println(min(i));//1
+		Float[] f = {2.1f,3.2f,5.3f,3.2f,2.4f,4.3f};
+		System.out.println(min(f));//2.1
+		Double[] d = {5.3,4.3,4.6,3.4,7.5};
+		System.out.println(min(d));//3.4
+	    }
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
